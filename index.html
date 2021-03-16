@@ -9,7 +9,11 @@
 
      <!-- Compiled and minified JavaScript -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <title>Game Guide</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <title>Game Guide</title>
 </head>
 <body class="grey lighten-3">
     <nav class="z-depth-3 grey lighten-4">
@@ -18,19 +22,19 @@
             <img src="img/EnoloLogo.png" style="width: 150px;">
           </a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li class="logged-in">
+              <li class="logged-in" style="display: none;">
                 <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
               </li>
-              <li class="logged-in">
+              <li class="logged-in" style="display: none;">
                 <a href="#" class="grey-text" id="logout">Logout</a>
               </li>
-              <li class="logged-in">
+              <li class="logged-in" style="display: none;">
                 <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
               </li>
-              <li class="logged-out">
+              <li class="logged-out" style="display: none;">
                 <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
               </li>
-              <li class="logged-out">
+              <li class="logged-out" style="display: none;">
                 <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
               </li>
           </ul>
@@ -55,7 +59,7 @@
     </div>
   </div>
     
-  <!-- SIGN UP MODAL -->
+    <!-- SIGN UP MODAL -->
   <div id="modal-signup" class="modal">
     <div class="modal-content">
       <h4>Sign up</h4><br />
@@ -72,7 +76,7 @@
       </form>
     </div>
   </div>
-     <!-- ACCOUNT MODAL -->
+    <!-- ACCOUNT MODAL -->
   <div id="modal-account" class="modal">
     <div class="modal-content center-align">
       <h4>Account details</h4><br />
@@ -116,7 +120,7 @@
         <div class="collapsible-header grey lighten-4">Guide title</div>
         <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
       </li> -->
-      
+
     </ul>
   </div>
   <!-- The core Firebase JS SDK is always required and must be listed first -->

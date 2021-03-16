@@ -1,9 +1,6 @@
 const signupform = document.querySelector('#signup-form');
 const loginform = document.querySelector('#login-form');
 
-db.collection('guides').get().then(snapshot => {
-    setupGuide(snapshot.docs);
-})
 
 //signup
 signupform.addEventListener('submit', (e) => {
@@ -48,8 +45,35 @@ loginform.addEventListener('submit', (e) => {
 //Auth status changes
 auth.onAuthStateChanged((user) => {
     if(user) {
-        console.log('user logged in: ', user);
+        db.collection('guides').onSnapshot(snapshot => {
+            setupGuide(snapshot.docs);
+            setupUI(user);
+        }, err => console.log(err.message))
     } else {
-        console.log('user logged out');
+        setupUI();
+        setupGuide([]);
     }
 })
+
+
+const create = document.querySelector('#create-form');
+create.addEventListener('submit', (e) => {
+    
+    e.preventDefault();
+    db.collection('guides').add({
+        title: create['title'].value,
+        content: create['content'].value
+    }).then(() => {
+        const modal = document.querySelector('#modal-create');
+        M.Modal.getInstance(modal).close();
+        create.reset();
+        
+    }).catch((err) => {
+        let html ='';
+        let div = `<div class="alert alert-warning" role="alert"> ${err.message} </div>`
+      html += div;
+      guides.innerHTML += html;
+        console.log(err.message);
+    })
+})
+
