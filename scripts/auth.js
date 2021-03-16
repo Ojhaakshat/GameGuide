@@ -9,9 +9,23 @@ signupform.addEventListener('submit', (e) => {
     // get info 
     const email = signupform['signup-email'].value;
     const password = signupform['signup-password'].value;
+    const signupBio = signupform['signup-bio'].value;
+    
     //signup user
+    // auth.createUserWithEmailAndPassword(email, password).then(cred => {
+    //     console.log(cred);
+    //     const modal = document.querySelector('#modal-signup');
+    //     M.Modal.getInstance(modal).close();
+    //     signupform.reset();
+    // })
+    
+    //signup and create user collection and document
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
-        console.log(cred);
+        // console.log(cred);
+        return db.collection('users').doc(cred.user.uid).set({
+            bio: signupBio,
+        })
+    }).then(() => {
         const modal = document.querySelector('#modal-signup');
         M.Modal.getInstance(modal).close();
         signupform.reset();
@@ -45,6 +59,7 @@ loginform.addEventListener('submit', (e) => {
 //Auth status changes
 auth.onAuthStateChanged((user) => {
     if(user) {
+        //It is fired now whenever the database is changed - making it realtime
         db.collection('guides').onSnapshot(snapshot => {
             setupGuide(snapshot.docs);
             setupUI(user);

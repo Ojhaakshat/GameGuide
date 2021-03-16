@@ -5,8 +5,12 @@ const accountDetils = document.querySelector('.account-details');
 
 const setupUI = (user) => {
     if(user) {
-        const html = `<div>Logged In As : ${user.email}</div>`
-        accountDetils.innerHTML = html;
+        //to get a specific document for a collection
+        db.collection('users').doc(user.uid).get().then(doc => {
+            const html = `<div>Logged In As : ${user.email}</div>
+                            <div>${doc.data().bio}</div>`
+            accountDetils.innerHTML = html;
+        })
         loggedInLinks.forEach(element => {
             element.style.display = 'block';
         });
