@@ -1,6 +1,9 @@
 const signupform = document.querySelector('#signup-form');
 const loginform = document.querySelector('#login-form');
 
+db.collection('guides').get().then(snapshot => {
+    setupGuide(snapshot.docs);
+})
 
 //signup
 signupform.addEventListener('submit', (e) => {
